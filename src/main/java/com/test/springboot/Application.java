@@ -77,8 +77,8 @@ public class Application implements CommandLineRunner {
      * Store users in database
      */
     private void saveUsersInDataBase() {
-        User user1 = new User("Ali","ali.adamecantoran@hcl.com", LocalDate.of(1991,12,15));
-        User user2 = new User("Diaz, Julio","julio.diaz@hcl.com", LocalDate.of(1982,7,13));
+        User user1 = new User("Ali","ali.adamecantoran@test.com", LocalDate.of(1991,12,15));
+        User user2 = new User("Diaz, Julio","julio.diaz@test.com", LocalDate.of(1982,7,13));
         User user3 = new User("Kenya","kenya@gmail.com", LocalDate.of(1996,1,23));
         User user4 = new User("Max","max.adame@gmail.com", LocalDate.of(1969,1,15));
         User user5 = new User("Diaz, Bruno","imbatman@ratalada.com", LocalDate.of(1982,7,13));
@@ -90,7 +90,7 @@ public class Application implements CommandLineRunner {
     }
 
     private void saveUsersTransactional() {
-        User user0 = new User("Miguel","miguel.adamecantoran@hcl.com", LocalDate.of(1991,12,15));
+        User user0 = new User("Miguel","miguel.adamecantoran@test.com", LocalDate.of(1991,12,15));
 
         List<User> listWithUsers = Arrays.asList(user0);
         try {
@@ -103,8 +103,8 @@ public class Application implements CommandLineRunner {
 
     private void saveUsersTransactional2() {
 
-        User user1 = new User("Miguel","miguel.adamecantoran@hcl.com", LocalDate.of(1991,12,15));
-        User user2 = new User("Miguel","miguel.adamecantoran@hcl.com", LocalDate.of(1991,12,15));
+        User user1 = new User("Miguel","miguel.adamecantoran@test.com", LocalDate.of(1991,12,15));
+        User user2 = new User("Miguel","miguel.adamecantoran@test.com", LocalDate.of(1991,12,15));
 
         List<User> listUsers = Arrays.asList(user1,user2);
         try {
@@ -121,7 +121,7 @@ public class Application implements CommandLineRunner {
             //Integer id = 1;
             User testUser = userService.getById(id);
             if(testUser != null) {
-                testUser.setEmail("miguel.adamecantoran@hcl.com");
+                testUser.setEmail("miguel.adamecantoran@test.com");
                 userService.update(testUser, id.longValue());
             }
         } catch (Exception e) {
@@ -132,7 +132,7 @@ public class Application implements CommandLineRunner {
 
     private void getInfoJPQLfromUser() {
         logger.info("User with method getInfoJPQLfromUser "+
-                userRepository.findByUserEmail("ali.adamecantoran@hcl.com")
+                userRepository.findByUserEmail("ali.adamecantoran@test.com")
                         .orElseThrow(() -> new RuntimeException("User not found")));
         userRepository.findAndSort("Diaz", Sort.by("id").descending())
                 .stream()
@@ -148,13 +148,13 @@ public class Application implements CommandLineRunner {
 
         userRepository.findByName("Diaz, Julio").stream().forEach(user -> logger.info("Usuario con Query Method " + user));
 
-        logger.info("Usuario con query method userRepository.findByEmailAndName() " + userRepository.findByEmailAndName("julio.diaz@hcl.com", "Diaz, Julio")
+        logger.info("Usuario con query method userRepository.findByEmailAndName() " + userRepository.findByEmailAndName("julio.diaz@test.com", "Diaz, Julio")
                 .orElseThrow(() -> new RuntimeException("User not found")));
 
         userRepository.findByNameLike("%Diaz%").stream().forEach(user -> logger.info("Usuario findByNameLike " + user));
         userRepository.findByNameLike("%Diaz%").stream().forEach(user -> logger.info("Usuario findByNameLike " + user));
 
-        userRepository.findByNameOrEmail("Kenya G.", "ali.adamecantoran@hcl.com").stream().forEach(user -> logger.info("Usuario findByNameOrEmail " + user + " with age " + AgeCalculation.getAge(user.getBirthDate()))); // fetch 2 users
+        userRepository.findByNameOrEmail("Kenya G.", "ali.adamecantoran@test.com").stream().forEach(user -> logger.info("Usuario findByNameOrEmail " + user + " with age " + AgeCalculation.getAge(user.getBirthDate()))); // fetch 2 users
 
         userRepository.findByBirthDateBetween(LocalDate.of(1982,7,13), LocalDate.of(1996,10,14))
                 .stream().forEach(user -> logger.info("Usuario findByBirthDateBetween " + user)); // Inclusive in dates
@@ -163,7 +163,7 @@ public class Application implements CommandLineRunner {
         userRepository.findByNameContainingOrderByIdDesc("Diaz").stream().forEach(user -> logger.info("Usuario findByNameLikeOrderByIdDesc " + user));
 
         logger.info("Usuario con query method userRepository.getAllByBirthDateAndEmail() "
-                + userRepository.getAllByBirthDateAndEmail(LocalDate.of(1991,12,15), "ali.adamecantoran@hcl.com")
+                + userRepository.getAllByBirthDateAndEmail(LocalDate.of(1991,12,15), "ali.adamecantoran@test.com")
                 .orElseThrow(() -> new RuntimeException("No namedParameter results")));
 
         // Example reference operator Java 8

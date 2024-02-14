@@ -43,7 +43,7 @@ public class HttpRestapiJunitUserTest {
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.name").value("Ali"))
-                .andExpect(jsonPath("$.email").value("ali.adamecantoran@hcl.com"))
+                .andExpect(jsonPath("$.email").value("ali.adamecantoran@test.com"))
                 .andExpect(jsonPath("$.birthDate").value("1991-12-15"));
                 //.andExpect(jsonPath("$[0].id").exists());
     }
@@ -99,7 +99,7 @@ public class HttpRestapiJunitUserTest {
     @Test
     public void testUserUpdateOk() throws Exception {
         // Mock user obj
-        String userNewEmail = "kenya23.g@gmail.com";
+        String userNewEmail = "kenya23.g@hotmail.com";
         String userNewName = "Kenya G.";
         LocalDate userNewBirthdate = LocalDate.of(1996,01,23);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");

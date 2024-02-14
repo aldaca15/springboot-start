@@ -35,7 +35,7 @@ public class UserSeviceMockitoTest {
         Long testedUser = 1L;
         existingUser.setId(testedUser);
         existingUser.setName("Ali");
-        existingUser.setEmail("ali.adamecantoran@hcl.com");
+        existingUser.setEmail("ali.adamecantoran@test.com");
         existingUser.setBirthDate(LocalDate.of(1991,12,15));
 
         when(userRepository.findById(anyLong()))
@@ -44,7 +44,7 @@ public class UserSeviceMockitoTest {
         User userDto = userService.getById(testedUser);
 
         assertNotNull(userDto);
-        assertEquals("ali.adamecantoran@hcl.com", userDto.getEmail());
+        assertEquals("ali.adamecantoran@test.com", userDto.getEmail());
     }
 
     /*@Test

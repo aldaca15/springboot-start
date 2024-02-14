@@ -58,14 +58,14 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `name`, `email`, `birthday`) VALUES
-(1, 'Ali', 'ali.adamecantoran@hcl.com', '1991-12-15'),
-(2, 'Diaz, Julio', 'julio.diaz@hcl.com', '1982-07-13'),
-(3, 'Kenya G.', 'kenya23.g@gmail.com', '1996-01-23'),
+(1, 'Ali', 'ali.adamecantoran@test.com', '1991-12-15'),
+(2, 'Diaz, Julio', 'julio.diaz@test.com', '1982-07-13'),
+(3, 'Kenya G.', 'kenya23.g@hotmail.com', '1996-01-23'),
 (4, 'Max', 'max.adame@gmail.com', '1969-01-15'),
 (5, 'Diaz, Bruno', 'imbatman@ratalada.com', '1982-07-13'),
 (74, 'Michael Scott', 'worldbestsboss@dundermifflin.com', '1969-04-25'),
-(129, 'Miguel', 'miguel.adamecantoran@hcl.com', '1991-12-15'),
-(130, 'Miguel', 'mike.adamecantoran@hcl.com', '1991-12-15'),
+(129, 'Miguel', 'miguel.adamecantoran@test.com', '1991-12-15'),
+(130, 'Miguel', 'mike.adamecantoran@test.com', '1991-12-15'),
 (142, 'Mary', 'eliwinst@test.com', '1986-10-10');
 
 --
