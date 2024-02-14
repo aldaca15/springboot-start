@@ -1,19 +1,20 @@
 package com.test.springboot.entity;
 
-/*import org.junit.Test;
+/* Previous imports called junit instead of jupiter, kept here as reference
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;*/
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UserTest {
 
     @Test
-    public void emailIsValid() throws Exception {
-        String email = "aliadame@gmail.com";
-        assertThat(User.isUserEmailValid(email));
+    public void emailIsValid() {
+        String email = "aliadame15@gmail.com";
+        assertTrue(User.isUserEmailValid(email));
     }
 
     @Test
