@@ -29,13 +29,26 @@ public class FilterApplesWithPredicateTest {
         assertTrue(redApples.size() == 4); // 4 apples out of 6 are green
     }
 
+    // Additional test that implements red filter by using an anonymous class
+    @Test
+    public void filterByRedColor() {
+        List<Apple> someApples = genericAppleList();
+        List<Apple> redApples = this.filterApples(someApples, new ApplePredicate() {
+            @Override
+            public boolean test(Apple apple) {
+                return "red".equalsIgnoreCase(apple.getColor());
+            }
+        });
+        assertTrue(redApples.size() == 2); // 2 apples out of 6 are red
+    }
+
     public List<Apple> genericAppleList() {
         List<Apple> appleQAline = new ArrayList<>();
         Apple apple1 = new Apple("red", 120);
         appleQAline.add(apple1);
         Apple apple2 = new Apple("GREEN", 140);
         appleQAline.add(apple2);
-        Apple apple3 = new Apple("red", 150);
+        Apple apple3 = new Apple("Red", 150);
         appleQAline.add(apple3);
         Apple apple4 = new Apple("green", 160);
         appleQAline.add(apple4);
