@@ -121,4 +121,26 @@ public class ImperativeVsDeclarativeTest {
                 .orElse(null);
         assertEquals(6, firstBigger); // Expected 6, and result is 6, so :)
     }
+
+    @Test
+    public void namesStartingWithM_Imperative() {
+        List<String> names = Arrays.asList("Ana", "Mike", "Peter", "Louis", "Maria");
+        int totalNames = 0;
+        for (String name : names) {
+            if(name.toLowerCase().startsWith("m")) {
+                totalNames += 1;
+            }
+        }
+        assertEquals(2, totalNames);
+    }
+
+    @Test
+    public void namesStartingWithM_Declarative() {
+        List<String> names = Arrays.asList("Ana", "Mike", "Peter", "Louis", "Maria");
+        long totalNames = names.stream()
+                .filter(name -> name.toLowerCase().startsWith("m"))
+                .count();
+        assertEquals(2, totalNames);
+    }
+
 }
