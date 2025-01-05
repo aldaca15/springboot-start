@@ -98,4 +98,27 @@ public class ImperativeVsDeclarativeTest {
         assertEquals(names.get(0).toUpperCase(), upperCaseNames.get(0)); // ANA
         assertEquals(names.get(names.size()-1).toUpperCase(), upperCaseNames.get(names.size()-1)); // MARIA
     }
+
+    @Test
+    public void findFirstNumberBiggerThan5_Imperative() {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        int firstBigger = 0;
+        for(int number : numbers) {
+            if(number > 5) {
+                firstBigger = number;
+                break;
+            }
+        }
+        assertEquals(6, firstBigger);
+    }
+
+    @Test
+    public void findFirstNumberBiggerThan5_Declarative() {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        Integer firstBigger = numbers.stream()
+                .filter(number -> number > 5)
+                .findFirst()
+                .orElse(null);
+        assertEquals(6, firstBigger); // Expected 6, and result is 6, so :)
+    }
 }
