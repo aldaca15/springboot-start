@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -141,6 +142,22 @@ public class ImperativeVsDeclarativeTest {
                 .filter(name -> name.toLowerCase().startsWith("m"))
                 .count();
         assertEquals(2, totalNames);
+    }
+
+    @Test
+    public void orderNumbers_Imperative() {
+        List<Integer> unsortedNumbers = new ArrayList<>(Arrays.asList(5, 2, 8, 1, 9, 3));
+        Collections.sort(unsortedNumbers);
+        assertEquals(1, unsortedNumbers.get(0));
+        assertEquals(9, unsortedNumbers.get(unsortedNumbers.size()-1));
+    }
+
+    @Test
+    public void orderNumbers_Declarative() {
+        List<Integer> unsortedNumbers = new ArrayList<>(Arrays.asList(5, 2, 8, 1, 9, 3));
+        List<Integer> sortedNumbers = unsortedNumbers.stream().sorted().collect(Collectors.toList());
+        assertEquals(1, sortedNumbers.get(0));
+        assertEquals(9, sortedNumbers.get(unsortedNumbers.size()-1));
     }
 
 }
